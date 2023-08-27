@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.gita.fooddeliveryumidjon.presentation.ui.screens.splash.SplashScreen"
+        android:label="SplashScreen"
+        tools:layout="@layout/screen_splash">
+        <action
+            android:id="@+id/action_splashScreen_to_screenHome"
+            app:destination="@id/screenHome"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_signInScreen"
+            app:destination="@id/signInScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenHome"
+        android:name="uz.gita.fooddeliveryumidjon.presentation.ui.screens.main.MainScreen"
+        android:label="ScreenHome"
+        tools:layout="@layout/screen_main" >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue='"Umidjon"' />
+        <action
+            android:id="@+id/action_screenHome_to_signInScreen"
+            app:destination="@id/signInScreen"
+            app:popUpTo="@id/screenHome"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_screenHome_to_detailsScreen"
+            app:destination="@id/detailsScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInScreen"
+        android:name="uz.gita.fooddeliveryumidjon.presentation.ui.screens.signin.SignInScreen"
+        android:label="SignInScreen"
+        tools:layout="@layout/screen_sign_in" >
+        <action
+            android:id="@+id/action_signInScreen_to_signUpScreen"
+            app:destination="@id/signUpScreen" />
+        <action
+            android:id="@+id/action_signInScreen_to_screenHome"
+            app:destination="@id/screenHome"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpScreen"
+        android:name="uz.gita.fooddeliveryumidjon.presentation.ui.screens.signup.SignUpScreen"
+        android:label="SignUpScreen"
+        tools:layout="@layout/screen_sign_up" >
+        <action
+            android:id="@+id/action_signUpScreen_to_screenHome"
+            app:destination="@id/screenHome"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsScreen"
+        android:name="uz.gita.fooddeliveryumidjon.presentation.ui.screens.details.DetailsScreen"
+        android:label="DetailsScreen" >
+        <argument
+            android:name="productData"
+            app:argType="uz.gita.fooddeliveryumidjon.model.ProductData" />
+    </fragment>
+</navigation>
